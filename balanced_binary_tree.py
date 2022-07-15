@@ -19,3 +19,21 @@ def is_balanced(tree: Node) -> bool:
     if abs(heightLeft - heightRight) > 1:
         return False
     return is_balanced(tree.left) and is_balanced(tree.right)
+
+
+    # second approach
+def is_balanced_second_approach(tree: Node) -> bool:
+    # WRITE YOUR BRILLIANT CODE HERE
+    def getMaxDepth(root, currDepth):
+        if not root:
+            return 0
+        heightLeft = getMaxDepth(root.left, currDepth)
+        heightRight = getMaxDepth(root.right, currDepth)
+        if abs(heightLeft - heightRight) > 1:
+            return -1
+        if heightLeft == -1 or heightRight == -1:
+            return -1
+        return max(heightLeft, heightRight) + 1
+    
+    
+    return getMaxDepth(tree, tree.val) != -1
