@@ -1,5 +1,10 @@
 # my solution - leetcode
+from typing import List
 from collections import deque
+from collections import defaultdict
+from enum import Enum
+
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         def create_graph(prerequisites, numCourses):
@@ -43,45 +48,6 @@ class Solution:
 
 
 # my solution - algomonster
-from typing import List
-from collections import deque
-
-def is_valid_course_schedule(n: int, prerequisites: List[List[int]]) -> bool:
-    # WRITE YOUR BRILLIANT CODE HERE
-    queue = deque([])
-    res = []
-    graph = {i:[] for i in range(n)}
-    for a, b in prerequisites:
-        graph[b].append(a)
-        
-    indegrees = {i: 0 for i in range(n)}
-    for a, _ in prerequisites:
-        indegrees[a] += 1
-        
-    for node, degree in indegrees.items():
-        if degree == 0:
-            queue.append(node)
-        
-    if not queue:
-        return False
-        
-    while queue:
-        node = queue.popleft()
-        if indegrees[node] == 0:
-            res.append(node)
-        for child in graph[node]:
-            indegrees[child] -= 1
-            if indegrees[child] == 0:
-                queue.append(child)
-        
-    return len(res) == len(indegrees)
-
-# algomonster solution
-# DFS
-from collections import defaultdict
-from enum import Enum
-from typing import List
-
 class State(Enum):
     TO_VISIT = 0
     VISITING = 1
@@ -127,3 +93,6 @@ def is_valid_course_schedule(n: int, prerequisites: List[List[int]]) -> bool:
             return False
 
     return True
+
+# print(is_valid_course_schedule(3, [[0, 1], [0, 2], [1,2]]))
+print(is_valid_course_schedule(2, [[0, 1], [1, 0]]))
