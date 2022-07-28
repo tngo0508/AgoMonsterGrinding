@@ -32,10 +32,10 @@
             res.push(mat[row][col]);    
         } else {
             if (upRight) {
-                if (col >= numCol) ++row;
+                if (col >= numCol) ++row; // check for col first because when we reach the top right corner, we don't want to move col to the right, only move down
                 else if (row < 0) ++col;
             } else {
-                if (row >= numRow) ++col;
+                if (row >= numRow) ++col; // check for row first because when we reach the left bottom corner, we only want to move the right
                 else if (col < 0) ++ row;
             }
             upRight = !upRight;
