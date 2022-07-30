@@ -28,3 +28,4 @@ function validBst(root) {
         return dfs(root.left, min_val, root.val) && dfs(root.right, root.val, max_val);
     }
     return dfs(root, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY) // root is always valid
+}
