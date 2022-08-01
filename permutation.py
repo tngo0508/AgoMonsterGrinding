@@ -2,11 +2,8 @@ from typing import List
 
 def permutations(letters: str) -> List[str]:
     # WRITE YOUR BRILLIANT CODE HERE
-    # there are multiple ways to do this problem, the tricky part is that we need to verify if the result can be in random order or not
-    # if the result needs to be in order then list sliding method will be applied
-    # otherwise, we can do the swapping method if the question doesn't ask for the order of the output
-
-    # this method preserves the order
+    # make sure make a deepcopy of candidate solution before return when complete 1 path
+    # slicing method
     def backtrack(first, s, curr, res):
         if len(s) == 0:
             res.append("".join(curr[:]))
@@ -14,23 +11,6 @@ def permutations(letters: str) -> List[str]:
         for i in range(first, len(s)):
             curr.append(s[i])
             backtrack(first, s[:i] + s[i+1:], curr, res)
-            curr.pop() 
-    
-    result = []
-    letterArr = list(letters)
-    backtrack(0, letterArr, [], result)
-    return result
-
-    # swapping method doesn't preserve the order
-    def backtrack_swap_method(first, s, curr, res):
-        if len(s) == len(curr):
-            res.append("".join(curr[:]))
-            return
-        for i in range(first, len(s)):
-            curr.append(s[i])
-            s[first], s[i] = s[i], s[first]
-            backtrack(first, s, curr, res)
-            s[first], s[i] = s[i], s[first]
             curr.pop() 
     
     result = []
@@ -63,3 +43,28 @@ def permutations(letters):
 
 print(permutations("abc"))
 print(permutations("ab"))
+
+# leetcode solution - swap method
+class Solution:
+    def permute(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        def backtrack(first = 0):
+            # if all integers are used up
+            if first == n:  
+                output.append(nums[:])
+            for i in range(first, n):
+                # place i-th integer first 
+                # in the current permutation
+                nums[first], nums[i] = nums[i], nums[first]
+                # use next integers to complete the permutations
+                backtrack(first + 1)
+                # backtrack
+                nums[first], nums[i] = nums[i], nums[first]
+        
+        n = len(nums)
+        output = []
+        backtrack()
+        return output
