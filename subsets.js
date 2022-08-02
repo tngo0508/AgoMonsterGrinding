@@ -36,3 +36,21 @@ function subsets(nums) {
     dfs(0, []);
     return res;
 }
+
+// algomonster alternative approach
+// apply pruning
+function subsets(nums) {
+    const res = [[]];
+    function dfs(i, cur) {
+        if (i == nums.length) {
+            return;
+        }
+        cur.push(nums[i]);
+        res.push([...cur]);
+        dfs(i + 1, cur);
+        cur.pop();
+        dfs(i + 1, cur);
+    }
+    dfs(0, []);
+    return res;
+}
