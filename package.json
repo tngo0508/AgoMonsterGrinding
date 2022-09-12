@@ -1,0 +1,30 @@
+{
+  "name": "agomonstergrinding",
+  "version": "1.0.0",
+  "description": "",
+  "main": "alien_dictionary.js",
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-promise": "^6.0.1",
+    "prettier": "^2.7.1",
+    "prettier-airbnb-config": "^1.0.0",
+    "prettier-config-standard": "^5.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tngo0508/AgoMonsterGrinding.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tngo0508/AgoMonsterGrinding/issues"
+  },
+  "homepage": "https://github.com/tngo0508/AgoMonsterGrinding#readme"
+}
