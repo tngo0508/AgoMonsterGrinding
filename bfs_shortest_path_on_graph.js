@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 function shortestPath(graph, a, b) {
   // WRITE YOUR BRILLIANT CODE HERE
   const queue = [[a, 0]];

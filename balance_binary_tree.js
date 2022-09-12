@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 class Node {
   constructor(val, left = null, right = null) {
     this.val = val;
@@ -14,13 +15,9 @@ function maxDepth(node) {
 function isBalanced(tree) {
   // WRITE YOUR BRILLIANT CODE HERE
   if (!tree) return true;
-  let L = maxDepth(tree.left);
-  let R = maxDepth(tree.right);
-  return (
-    Math.abs(R - L) <= 1 &&
-    isBalanced(tree.left) &&
-    isBalanced(tree.right)
-  );
+  const L = maxDepth(tree.left);
+  const R = maxDepth(tree.right);
+  return Math.abs(R - L) <= 1 && isBalanced(tree.left) && isBalanced(tree.right);
 }
 
 // solution

@@ -1,3 +1,9 @@
+/**
+ * binary search
+ * @param {array} arr array of number
+ * @param {number} target number target
+ * @return {index} index or -1
+ */
 function binarySearch(arr, target) {
   // WRITE YOUR BRILLIANT CODE HERE
   let l = 0;
