@@ -14,75 +14,74 @@
             ]
 */
 class Node {
-    constructor(val, children = []) {
-        this.val = val;
-        this.children = children;
-    }
+  constructor(val, children = []) {
+    this.val = val;
+    this.children = children;
+  }
 }
 
 function ternaryTreePaths(root) {
-    // WRITE YOUR BRILLIANT CODE HERE
-    const res = [];
-    function dfs(node, curr) {
-        curr.push(node.val);
-        for (const child of node.children) {
-            dfs(child, curr);
-        }
-        if (node.children.length === 0)
-            res.push(curr.join("->"));
-        curr.pop();
+  // WRITE YOUR BRILLIANT CODE HERE
+  const res = [];
+  function dfs(node, curr) {
+    curr.push(node.val);
+    for (const child of node.children) {
+      dfs(child, curr);
     }
-    
-    dfs(root, [])
-    return res;
+    if (node.children.length === 0) res.push(curr.join('->'));
+    curr.pop();
+  }
+
+  dfs(root, []);
+  return res;
 }
 
 // solution
 function dfs(root, path, res) {
-    // exit condition, reached leaf node, append paths to results
-    if (root.children.length === 0) {
-        path.push(root.val);
-        const cur_path = path.join('->');
-        res.push(cur_path);
-        return;
+  // exit condition, reached leaf node, append paths to results
+  if (root.children.length === 0) {
+    path.push(root.val);
+    const cur_path = path.join('->');
+    res.push(cur_path);
+    return;
+  }
+  // dfs on each non-null child
+  for (const child of root.children) {
+    if (child) {
+      const path_copy = Array.from(path);
+      path_copy.push(root.val);
+      dfs(child, path_copy, res);
     }
-    // dfs on each non-null child
-    for (const child of root.children) {
-        if (child) {
-            const path_copy = Array.from(path);
-            path_copy.push(root.val);
-            dfs(child, path_copy, res);
-        }
-    }
+  }
 }
 
 function ternaryTreePaths(root) {
-    let res = [];
-    if (root) dfs(root, [], res);
-    return res;
+  let res = [];
+  if (root) dfs(root, [], res);
+  return res;
 }
 // solution improve space
 function dfs(root, path, res) {
-    // exit condition, reached leaf node, append paths to results
-    if (root.children.length === 0) {
-        path.push(root.val);
-        const cur_path = path.join('->');
-        res.push(cur_path);
-        path.pop();
-        return;
+  // exit condition, reached leaf node, append paths to results
+  if (root.children.length === 0) {
+    path.push(root.val);
+    const cur_path = path.join('->');
+    res.push(cur_path);
+    path.pop();
+    return;
+  }
+  // dfs on each non-null child
+  for (const child of root.children) {
+    if (child) {
+      path.push(root.val);
+      dfs(child, path, res);
+      path.pop();
     }
-    // dfs on each non-null child
-    for (const child of root.children) {
-        if (child) {
-            path.push(root.val);
-            dfs(child, path, res);
-            path.pop();
-        }
-    }
+  }
 }
 
 function ternaryTreePaths(root) {
-    let res = [];
-    if (root) dfs(root, [], res);
-    return res;
+  let res = [];
+  if (root) dfs(root, [], res);
+  return res;
 }
