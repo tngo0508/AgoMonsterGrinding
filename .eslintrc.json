@@ -4,7 +4,7 @@
     "commonjs": true,
     "es2021": true
   },
-  "extends": ["eslint:recommended", "google", "prettier"],
+  "extends": ["eslint:recommended", "airbnb", "prettier"],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest"
